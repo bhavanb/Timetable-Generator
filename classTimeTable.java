@@ -1,3 +1,12 @@
+
+/**
+ * An explanation of the algorithm:
+ * - table is a 2D array that stores the subjects in the time table, the rows are the days of the week and the columns are the periods in a day
+ * - subjects are selected from the inputs for the given grade and randomized and stored in table
+ * - iteratively, the number of actual occurences of each subject are checked against the required number os session(from the input file)
+ * - more sessions are allocated and extra sessions are removed as required
+ * This is repeated for each grade in inputs.csv
+ */
 import java.io.*;
 import java.util.*;
 
@@ -40,7 +49,7 @@ public class classTimeTable {
     }
 
     /**
-     * Select a random element from an list
+     * Select a random element from a list
      * 
      * @param <T>   The type of the list
      * @param array The list
@@ -68,7 +77,8 @@ public class classTimeTable {
 
     /**
      * Counts the number of occurences of each subject in the timetable for a given
-     * grade
+     * grade and subtracts the required number of sessions to give the number of
+     * required sessions(is -ve) or extra sessions(is +ve) each subject has
      * 
      * @param grade The grade to look through
      * @return A HashMap containing the subject and the number of occurrences as a
@@ -109,6 +119,24 @@ public class classTimeTable {
     }
 
     /**
+     * Initializes the time table with random subjects chosen from the input
+     * 
+     * @param grade The grade to generate the timetable for
+     */
+    static void initTable(String grade) {
+        table = new String[5][sPeriods]; // 5 days a week, 8 periods per day
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table[0].length; j++) {
+                table[i][j] = getRandomElement(gradeSubjectMap.secondaryKeySet(grade) // select a random subject from
+                                                                                      // the list of subjects for the
+                                                                                      // given grade
+                        .toArray(new String[gradeSubjectMap.secondaryKeySet(grade).size()])); // and insert it into the
+                                                                                              // time table
+            }
+        }
+    };
+
+    /**
      * Validate the time table and make the necessary changes to ensure all the
      * subjects have the required number of sessions per week
      * 
@@ -141,23 +169,5 @@ public class classTimeTable {
             }
         }
     }
-
-    /**
-     * Initializes the time table with random subjects chosen from the input
-     * 
-     * @param grade The grade to generate the timetable for
-     */
-    static void initTable(String grade) {
-        table = new String[5][sPeriods]; // 5 days a week, 8 periods per day
-        for (int i = 0; i < table.length; i++) {
-            for (int j = 0; j < table[0].length; j++) {
-                table[i][j] = getRandomElement(gradeSubjectMap.secondaryKeySet(grade) // select a random subject from
-                                                                                      // the list of subjects for the
-                                                                                      // given grade
-                        .toArray(new String[gradeSubjectMap.secondaryKeySet(grade).size()])); // and insert it into the
-                                                                                              // time table
-            }
-        }
-    };
 
 }
