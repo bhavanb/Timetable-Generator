@@ -60,7 +60,7 @@ public class CSVHandler {
             printWriter.print("Break,");
             printWriter.println(table[i][7]);
         }
-        
+
         printWriter.close();
     }
 
