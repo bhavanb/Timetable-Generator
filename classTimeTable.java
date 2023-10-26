@@ -38,7 +38,7 @@ public class classTimeTable {
 
     /**
      * Select a random element from an array
-     * 
+     *
      * @param <T>   The type of the array
      * @param array The array
      * @return A random element from the array
@@ -50,7 +50,7 @@ public class classTimeTable {
 
     /**
      * Select a random element from a list
-     * 
+     *
      * @param <T>   The type of the list
      * @param array The list
      * @return A random element from the list
@@ -61,10 +61,10 @@ public class classTimeTable {
     }
 
     /**
-     * Counts and returns the number of occurences of a subject in the timetable
-     * 
+     * Counts and returns the number of occurrences of a subject in the timetable
+     *
      * @param sub The subject to search for
-     * @return The number of occurences
+     * @return The number of occurrences
      */
     static int count(String sub) {
         int c = 0;
@@ -76,10 +76,10 @@ public class classTimeTable {
     }
 
     /**
-     * Counts the number of occurences of each subject in the timetable for a given
+     * Counts the number of occurrences of each subject in the timetable for a given
      * grade and subtracts the required number of sessions to give the number of
      * required sessions(is -ve) or extra sessions(is +ve) each subject has
-     * 
+     *
      * @param grade The grade to look through
      * @return A HashMap containing the subject and the number of occurrences as a
      *         key, value pair
@@ -98,15 +98,15 @@ public class classTimeTable {
     }
 
     /**
-     * Finds the occurences of a given subject in the timetable
-     * 
+     * Finds the occurrences of a given subject in the timetable
+     *
      * @param sub The subject to search for
-     * @return A list containing Pairs of the indexes of the occurences of the
+     * @return A list containing Pairs of the indexes of the occurrences of the
      *         subject
-     * 
+     *
      * @see Pair
      */
-    static List<Pair<Integer, Integer>> getOccurences(String sub) {
+    static List<Pair<Integer, Integer>> getOccurrences(String sub) {
         List<Pair<Integer, Integer>> list = new ArrayList<Pair<Integer, Integer>>();
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[0].length; j++) {
@@ -120,7 +120,7 @@ public class classTimeTable {
 
     /**
      * Initializes the time table with random subjects chosen from the input
-     * 
+     *
      * @param grade The grade to generate the timetable for
      */
     static void initTable(String grade) {
@@ -139,17 +139,17 @@ public class classTimeTable {
     /**
      * Validate the time table and make the necessary changes to ensure all the
      * subjects have the required number of sessions per week
-     * 
+     *
      * @param grade The grade to generate the timetable for
      */
     static void validateTable(String grade) {
         HashMap<String, Integer> subjectOccurrences = new HashMap<String, Integer>();
-        subjectOccurrences = countSubs(grade); // count the number of occurences for each subject
+        subjectOccurrences = countSubs(grade); // count the number of occurrences for each subject
         for (String i : gradeSubjectMap.secondaryKeySet(grade)) { // iterate through the subjects for a given grade
             if (subjectOccurrences.get(i) > 0) { // if the subject has more sessions than necessary
-                List<Pair<Integer, Integer>> listOfOccurrences = getOccurences(i); // get the speicific occurences of
-                                                                                   // the subject with extra sessions
-                                                                                   // from the time table
+                List<Pair<Integer, Integer>> listOfOccurrences = getOccurrences(i); // get the specific occurrences of
+                                                                                    // the subject with extra sessions
+                                                                                    // from the time table
                 for (String k : gradeSubjectMap.secondaryKeySet(grade)) { // iterate through the subjects for a given
                                                                           // grade
                     while (listOfOccurrences.size() > 0 && subjectOccurrences.get(k) < 0) { // as long as there are
@@ -157,11 +157,12 @@ public class classTimeTable {
                                                                                             // second selected subject
                                                                                             // has less sessions than
                                                                                             // required
-                        Pair<Integer, Integer> a = getRandomElement(listOfOccurrences); // select a random occurence
+                        Pair<Integer, Integer> a = getRandomElement(listOfOccurrences); // select a random occurrence
                                                                                         // from the time table
                         table[a.x][a.y] = k; // and insert the subject which requires more sessions
-                        listOfOccurrences.remove(a); // remove the extra occurence which was just replaced from the list
-                        subjectOccurrences.put(i, subjectOccurrences.get(i) - 1); // update the number of occurences of
+                        listOfOccurrences.remove(a); // remove the extra occurrence which was just replaced from the
+                                                     // list
+                        subjectOccurrences.put(i, subjectOccurrences.get(i) - 1); // update the number of occurrences of
                                                                                   // the subjects
                         subjectOccurrences.put(k, subjectOccurrences.get(k) + 1);
                     }

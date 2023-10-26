@@ -12,8 +12,8 @@ import java.util.Set;
 public class CSVHandler {
     /**
      * Write the timetable to a .csv file with appropriate formatting
-     * 
-     * @param grade      The grade for which the time table has been generated
+     *
+     * @param grade      The grade for which the timetable has been generated
      * @param table      The timetable
      * @param subjectSet The list of subjects for the given grade
      * @throws IOException In case there was an error writing to the file
@@ -60,19 +60,16 @@ public class CSVHandler {
             printWriter.print("Break,");
             printWriter.println(table[i][7]);
         }
-        printWriter.println();
-        for (String sub : subjectSet) {
-            printWriter.print(sub + ",");
-        }
+        
         printWriter.close();
     }
 
     /**
      * Reads the inputs to generate the timetables from a specified file into a
      * HashMap2D
-     * 
+     *
      * @param filePath The path to the input file
-     * @return HashMap2D containing the frade, subjects and the number of sessions
+     * @return HashMap2D containing the grade, subjects and the number of sessions
      *         per week
      * @throws FileNotFoundException In case there was an error reading from the
      *                               file
