@@ -10,4 +10,4 @@ Run the following command to generate the timetables:
 The generated timetable(s) will be written to individual .csv files in the `out/` directory. Timings for break, lunch etc. are not currently customizable. This may be added in the future.
 
 ## Working:
-The working of this project has been documented thoroughly with inline and Javadoc comments along with the code.
+The working of this project has been documented thoroughly with inline and Javadoc comments alongside the code.
