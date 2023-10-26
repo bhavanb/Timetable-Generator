@@ -3,7 +3,7 @@
  * An explanation of the algorithm:
  * - table is a 2D array that stores the subjects in the time table, the rows are the days of the week and the columns are the periods in a day
  * - subjects are selected from the inputs for the given grade and randomized and stored in table
- * - iteratively, the number of actual occurences of each subject are checked against the required number of sessions(from the input file)
+ * - iteratively, the number of actual occurrences of each subject are checked against the required number of sessions(from the input file)
  * - more sessions are allocated and extra sessions are removed as required
  * This is repeated for each grade in inputs.csv
  */
